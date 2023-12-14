@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-Mapper.dtd">
+  
+<!-- boardMapper.xml -->
+<mapper namespace="com.itwillbs.mapper.BoardMapper">
+  	<insert id="insertBoard">
+  		INSERT INTO tbl_board(title,content,writer) 
+  		VALUES(#{title},#{content},#{writer})
+  	</insert>
+  	
+  	<select id="selectList" resultType="BoardVO">
+  		SELECT *
+  		FROM tbl_board
+  	</select>
+</mapper>
