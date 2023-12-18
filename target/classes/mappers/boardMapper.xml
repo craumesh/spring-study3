@@ -11,7 +11,30 @@
   	</insert>
   	
   	<select id="selectList" resultType="BoardVO">
-  		SELECT *
+  		SELECT * 
   		FROM tbl_board
   	</select>
+  	
+  	<select id="selectContent" resultType="BoardVO">
+  		SELECT * 
+  		FROM tbl_board 
+  		WHERE bno = #{bno}
+  	</select>
+  	
+  	<update id="updateContent">
+  		UPDATE tbl_board
+  		SET title = #{title}, content = #{content}, writer = #{writer} 
+  		WHERE bno = #{bno}
+  	</update>
+  	
+  	<update id="updateViewCount">
+  		UPDATE tbl_board 
+  		SET viewcnt = viewcnt+1 
+  		WHERE bno = #{bno}
+  	</update>
+  	
+  	<delete id="deleteBoard">
+  		DELETE FROM tbl_board
+  		WHERE bno = #{bno}
+  	</delete>
 </mapper>

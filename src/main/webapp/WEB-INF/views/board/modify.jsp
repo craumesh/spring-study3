@@ -11,15 +11,15 @@
 		<div class="box-body">
 			<div class="form-group">
 				<label for="exampleInputEmail1">작성자</label> 
-				<input type="text" class="form-control" id="exampleInputEmail1" name="writer" placeholder="작성자명을 입력하세요" required="required">
+				<input type="text" class="form-control" id="exampleInputEmail1" name="writer" value="${vo.writer }" placeholder="작성자명을 입력하세요" required="required">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">제목</label> 
-				<input type="text" class="form-control" id="exampleInputEmail1" name="title" placeholder="제목을 입력하세요" required="required">
+				<input type="text" class="form-control" id="exampleInputEmail1" name="title" value="${vo.title }" placeholder="제목을 입력하세요" required="required">
 			</div>
 			<div class="form-group">
 				<label>내용</label>
-				<textarea class="form-control" rows="3" name="content" placeholder="내용을 입력하세요"></textarea>
+				<textarea class="form-control" rows="3" name="content" placeholder="내용을 입력하세요">${vo.content }</textarea>
 			</div>
 		</div>
 

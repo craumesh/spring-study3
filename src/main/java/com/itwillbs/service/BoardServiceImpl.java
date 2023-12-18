@@ -20,16 +20,38 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDAO bdao;
 
 	@Override
-	public void registBoard(BoardVO vo) {
+	public void registBoard(BoardVO vo) throws Exception {
 		logger.debug("Service registBoard(BoardVO vo) 호출");
 		bdao.insertBoard(vo);		
 	}
 
 	@Override
-	public List<BoardVO> getList() {
+	public List<BoardVO> getList() throws Exception {
 		logger.debug("Service getList() 호출");
 		return bdao.selectList();
-	}	
+	}
 
-	
+	@Override
+	public BoardVO getContent(BoardVO vo) throws Exception {
+		logger.debug("Service getContent() 호출");
+		return bdao.selectContent(vo);
+	}
+
+	@Override
+	public void updateContent(BoardVO vo) throws Exception {
+		logger.debug("Service updateContent(BoardVO vo) 호출");
+		bdao.updateContent(vo);
+	}
+
+	@Override
+	public void updateViewCount(BoardVO vo) throws Exception {
+		logger.debug("Service updateContent(BoardVO vo) 호출");
+		bdao.updateViewCount(vo);
+	}
+
+	@Override
+	public void deleteBoard(BoardVO vo) throws Exception {
+		logger.debug("Service deleteBoard(BoardVO vo) 호출");
+		bdao.deleteBoard(vo);
+	}
 }
