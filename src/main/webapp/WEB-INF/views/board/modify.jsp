@@ -26,7 +26,7 @@
 		<div class="box-footer">
 			<button type="submit" class="btn btn-danger">작성 완료</button>
 			<div class="pull-right">
-				<button type="button" class="btn btn-primary" onclick="location.href='/board/listAll'">목록</button>
+				<button type="button" class="btn btn-primary" onclick="location.href='/board/listPage'">목록</button>
 			</div>
 		</div>
 	</form>

@@ -5,6 +5,18 @@
   
 <!-- boardMapper.xml -->
 <mapper namespace="com.itwillbs.mapper.BoardMapper">
+
+	<!-- DB 컬럼과 도메인 객체를 매핑 -->	
+	<!-- 프로퍼티명과 컬럼명이 동일할때 생략가능 -->
+	<resultMap type="com.itwillbs.domain.BoardVO" id="board">
+		<result property="bno" column="bno"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="writer" column="writer"/>
+		<result property="regdate" column="regdate"/>
+		<result property="viewcnt" column="viewcnt"/>
+	</resultMap>
+
   	<insert id="insertBoard">
   		INSERT INTO tbl_board(title,content,writer) 
   		VALUES(#{title},#{content},#{writer})
@@ -37,4 +49,16 @@
   		DELETE FROM tbl_board
   		WHERE bno = #{bno}
   	</delete>
+  	
+ 	<select id="listPage" resultType="BoardVO" resultMap="board">
+  		SELECT * 
+  		FROM tbl_board
+  		<!-- ORDER BY bno desc,regdate desc --> 
+  		LIMIT #{startPage},#{pageSize}
+  	</select>
+  	
+  	<select id="totalCount" resultType="int">
+  		SELECT COUNT(*)
+  		FROM tbl_board
+  	</select>
 </mapper>

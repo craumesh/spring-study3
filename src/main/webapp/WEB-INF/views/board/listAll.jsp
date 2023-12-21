@@ -5,6 +5,7 @@
 <%@ include file="../include/header.jsp"%>
 
 ${result }
+${pageVO }
 <div class="box box-primary">
 	<div class="box-header with-border">
 		<h3 class="box-title">ITWILL 게시판</h3>
@@ -81,6 +82,15 @@ ${result }
 	</div>
 
 	<div class="box-footer no-padding">
+		<div class="dataTables_paginate paging_simple_numbers">
+			<ul class="pagination">
+				<li class="paginate_button previous disabled"><a href="#" data-dt-idx="0" tabindex="0">Previous</a></li>
+				<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+					<li class="paginate_button"><a href="/board/listPage?page=1" data-dt-idx="1" tabindex="0">${i }</a></li>				
+				</c:forEach>
+				<li class="paginate_button next"><a href="#" data-dt-idx="7" tabindex="0">Next</a></li>
+			</ul>
+		</div>
 		<div class="mailbox-controls">
 
 			<button type="button" class="btn btn-default btn-sm checkbox-toggle">

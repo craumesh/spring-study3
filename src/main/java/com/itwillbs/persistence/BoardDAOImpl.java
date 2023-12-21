@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.Criteria;
 import com.itwillbs.service.BoardService;
 
 @Repository
@@ -56,6 +57,36 @@ public class BoardDAOImpl implements BoardDAO {
 	public void deleteBoard(BoardVO vo) throws Exception {
 		logger.debug("DAO deleteBoard(BoardVO vo) 호출");
 		sqlSession.update(NAMESPACE+".deleteBoard", vo);
+	}
+
+	@Override
+	public List<BoardVO> getBoardListPage(int page) throws Exception {
+		logger.debug("DAO getBoardListPage() 호출");
+		
+		// 페이징처리 계산
+		// page 1 => 1~10 => limit 0,10
+		// page 2 => 11~20 => limit 10,10
+		// (page-1)*10
+		
+		return sqlSession.selectList(NAMESPACE+".listPage", (page-1)*10);
+	}	
+	
+	@Override
+	public List<BoardVO> getBoardListPage(Criteria cri) throws Exception {
+		logger.debug("DAO getBoardListPage() 호출");
+		
+		// 페이징처리 계산
+		// page 1 => 1~10 => limit 0,10
+		// page 2 => 11~20 => limit 10,10
+		// (page-1)*10
+		
+		return sqlSession.selectList(NAMESPACE+".listPage", cri);
+	}
+
+	@Override
+	public int getTotalCount() throws Exception {
+		logger.debug("DAO getTotalCount() 호출");
+		return sqlSession.selectOne(NAMESPACE+".totalCount");
 	}	
 	
 }
