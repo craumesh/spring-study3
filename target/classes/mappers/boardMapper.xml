@@ -58,7 +58,10 @@
   	</select>
   	
   	<select id="totalCount" resultType="int">
-  		SELECT COUNT(*)
-  		FROM tbl_board
+  		<![CDATA[
+	  		SELECT COUNT(*)
+	  		FROM tbl_board
+	  		WHERE bno > 0
+  		]]>
   	</select>
 </mapper>

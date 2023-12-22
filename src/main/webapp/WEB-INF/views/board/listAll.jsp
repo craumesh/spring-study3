@@ -11,48 +11,14 @@ ${pageVO }
 		<h3 class="box-title">ITWILL 게시판</h3>
 		<div class="box-tools pull-right">
 			<div class="has-feedback">
-				<input type="text" class="form-control input-sm" placeholder="Search Mail"> <span class="glyphicon glyphicon-search form-control-feedback"></span>
+				<input type="text" class="form-control input-sm" placeholder="Search">
+				<span class="glyphicon glyphicon-search form-control-feedback"></span>
 			</div>
 		</div>
 
 	</div>
 
-	<div class="box-body no-padding">
-		<div class="mailbox-controls">
-
-			<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-				<i class="fa fa-square-o"></i>
-			</button>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default btn-sm">
-					<i class="fa fa-trash-o"></i>
-				</button>
-				<button type="button" class="btn btn-default btn-sm">
-					<i class="fa fa-reply"></i>
-				</button>
-				<button type="button" class="btn btn-default btn-sm">
-					<i class="fa fa-share"></i>
-				</button>
-			</div>
-
-			<button type="button" class="btn btn-default btn-sm">
-				<i class="fa fa-refresh"></i>
-			</button>			
-			
-			<div class="pull-right">
-				<button type="button" class="btn btn-primary" onclick="location.href='/board/regist'">글작성</button>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default btn-sm">
-						<i class="fa fa-chevron-left"></i>
-					</button>
-					<button type="button" class="btn btn-default btn-sm">
-						<i class="fa fa-chevron-right"></i>
-					</button>
-				</div>
-
-			</div>
-
-		</div>
+	<div class="box-body no-padding">		
 		<div class="table-responsive mailbox-messages">
 			<table class="table table-hover table-striped">
 				<tbody>
@@ -82,48 +48,27 @@ ${pageVO }
 	</div>
 
 	<div class="box-footer no-padding">
-		<div class="dataTables_paginate paging_simple_numbers">
-			<ul class="pagination">
-				<li class="paginate_button previous disabled"><a href="#" data-dt-idx="0" tabindex="0">Previous</a></li>
-				<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
-					<li class="paginate_button"><a href="/board/listPage?page=1" data-dt-idx="1" tabindex="0">${i }</a></li>				
-				</c:forEach>
-				<li class="paginate_button next"><a href="#" data-dt-idx="7" tabindex="0">Next</a></li>
-			</ul>
-		</div>
-		<div class="mailbox-controls">
-
-			<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-				<i class="fa fa-square-o"></i>
-			</button>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default btn-sm">
-					<i class="fa fa-trash-o"></i>
-				</button>
-				<button type="button" class="btn btn-default btn-sm">
-					<i class="fa fa-reply"></i>
-				</button>
-				<button type="button" class="btn btn-default btn-sm">
-					<i class="fa fa-share"></i>
-				</button>
-			</div>
-
-			<button type="button" class="btn btn-default btn-sm">
-				<i class="fa fa-refresh"></i>
-			</button>
-			<div class="pull-right">
+		<div class="dataTables_paginate paging_simple_numbers col-xs-push-6">
+			<div class="pagination pull-right">
 				<button type="button" class="btn btn-primary" onclick="location.href='/board/regist'">글작성</button>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default btn-sm">
-						<i class="fa fa-chevron-left"></i>
-					</button>
-					<button type="button" class="btn btn-default btn-sm">
-						<i class="fa fa-chevron-right"></i>
-					</button>
-				</div>
-
 			</div>
-
+			<ul class="pagination pagination-m pull-right">
+				<c:if test="${pageVO.prev }">
+					<li class="paginate_button previous">
+						<a href="/board/listPage?page=${pageVO.endPage-pageVO.displayPageNum }">Previous</a>
+					</li>
+				</c:if>
+				<c:forEach var="i" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+					<li ${pageVO.cri.page == i ? "class='paginate_button active'" : "class='paginate_button'"} >
+						<a href="/board/listPage?page=${i }">${i }</a>
+					</li>				
+				</c:forEach>
+				<c:if test="${pageVO.next }">
+					<li class="paginate_button next">
+						<a href="/board/listPage?page=${pageVO.startPage+pageVO.displayPageNum }">Next</a>
+					</li>
+				</c:if>
+			</ul>
 		</div>
 	</div>
 </div>

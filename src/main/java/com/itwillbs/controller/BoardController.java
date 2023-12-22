@@ -63,9 +63,6 @@ public class BoardController {
 			session.setAttribute("viewcntCheck", false);
 		}		
 		model.addAttribute("vo", bService.getContent(vo));
-		if(vo.getBno() == 3) {
-			throw new Exception("강제 예외 발생!!!");
-		}
 	}
 	
 	// 게시글 수정
